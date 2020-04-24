@@ -66,7 +66,7 @@ def predict():
 
 
 
-    return render_template('index.html', prediction_text='Predicted status of the project is {}'.format(str(y_pred)))
+    return render_template('index.html', prediction_text='Your project will {}'.format(str(y_pred)))
 
 
 if __name__ == "__main__":
