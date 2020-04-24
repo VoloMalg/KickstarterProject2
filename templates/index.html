@@ -44,12 +44,12 @@ function showNames(v){
 
 <body>
  <div class="login">
-	<h1>Type Your Project Data</h1>
+	<h2>Provide info of the project</h2>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
 
-        <p> Choose main category and subcutegory of Your project</p>
+        Choose the main category and subcategory of a project
 
     	<body onload="showNames('Art')">
 
@@ -76,7 +76,7 @@ function showNames(v){
 
      </select>
 
-
+        <br>
     	<!-- <input type="text" name="main_category" placeholder="main_category" required="required" />
         <input type="text" name="category" placeholder="category" required="required" /> -->
 		<input type="text" name="usd_goal_real" placeholder="usd_goal_real" required="required" />
@@ -88,7 +88,6 @@ function showNames(v){
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
-   <br>
    <br>
    {{ prediction_text }}
 

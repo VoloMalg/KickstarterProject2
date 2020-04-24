@@ -62,11 +62,12 @@ def predict():
 
     X_pred = df[FEATURE_LS]
 
-    y_pred = clf.predict(X_pred)
+    y_pred = clf.predict_proba(X_pred)[0,1]
+    y_pred = round(y_pred * 100, 2)
 
 
 
-    return render_template('index.html', prediction_text='Your project will{}'.format(str(y_pred)))
+    return render_template('index.html', prediction_text='Your project will successed with {}% chance'.format(str(y_pred)))
 
 
 if __name__ == "__main__":
