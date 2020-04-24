@@ -9,18 +9,81 @@
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+
+<script>
+var Art = Array('Art','Ceramics','Conceptual Art','Digital Art','Illustration','Installations','Mixed Media','Painting','Performance Art','Public Art','Sculpture','Textiles','Video Art');
+var Comics = Array('Anthologies','Comic Books','Comics','Events','Graphic Novels','Webcomics');
+var Crafts = Array('Candles','Crafts','Crochet','DIY','Embroidery','Glass','Knitting','Letterpress','Pottery','Printing','Quilts','Stationery','Taxidermy','Weaving','Woodworking');
+var Dance = Array('Dance','Performances','Residencies','Spaces','Workshops');
+var Design = Array('Architecture','Civic Design','Design','Graphic Design','Interactive Design','Product Design','Typography');
+var Fashion = Array('Accessories','Apparel','Childrenswear','Couture','Fashion','Footwear','Jewelry','Pet Fashion','Ready-to-wear');
+var FilmVideo = Array('Action','Animation','Comedy','Documentary','Drama','Experimental','Family','Fantasy','Festivals','FilmVideo','Horror','Movie Theaters','Music Videos','Narrative Film','Romance','Science Fiction','Shorts','Television','Thrillers','Webseries');
+var Food = Array('Bacon','Community Gardens','Cookbooks','Drinks','Farmers Markets','Farms','Food','Food Trucks','Restaurants','Small Batch','Vegan');
+var Games = Array('Games','Gaming Hardware','Live Games','Mobile Games','Playing Cards','Puzzles','Tabletop Games','Video Games');
+var Journalism = Array('Audio','Journalism','Photo','Print','Video','Web');
+var Music = Array('Blues','Chiptune','Classical Music','CountryFolk','Electronic Music','Faith','Hip-Hop','Indie Rock','Jazz','Kids','Latin','Metal','Music','Pop','Punk','RB','Rock','World Music');
+var Photography = Array('Animals','Fine Art','Nature','People','Photobooks','Photography','Places');
+var Publishing = Array('Academic','Art Books','Calendars','Childrens Books','Fiction','Literary Journals','Literary Spaces','Nonfiction','Periodicals','Poetry','Publishing','RadioPodcasts','Translations','Young Adult','Zines');
+var Technology = Array('3D Printing','Apps','Camera Equipment','DIY Electronics','Fabrication Tools','Flight','Gadgets','Hardware','Makerspaces','Robots','Software','Sound','Spac Exploration','Technology','Wearables');
+var Theater = Array('Immersive','Musical','Plays','Theater');
+
+function showNames(v){
+    var mas = eval(v);
+    var el = document.getElementById('names');
+    while(el.childNodes.length>0){
+        el.removeChild(el.childNodes[el.childNodes.length-1]);
+    }
+    for(var i=0;i<mas.length;i++){
+        var opt = document.createElement("option");
+        opt.innerHTML=mas[i];
+        el.appendChild(opt);
+    }
+}
+</script>
 </head>
 
 <body>
  <div class="login">
-	<h1>Predict Salary Analysis</h1>
+	<h1>TestTest</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+
+        <p> Choose main categotry and subcutegory of project</p>
+
+    	<body onload="showNames('Art')">
+
+    	<select id="level" name="main_category" onchange="showNames(this.value)">
+          <option value="Art">Art</option>
+          <option value="Comics">Comics</option>
+          <option value="Crafts">Crafts</option>
+          <option value="Dance">Dance</option>
+          <option value="Design">Design</option>
+          <option value="Fashion">Fashion</option>
+          <option value="FilmVideo">FilmVideo</option>
+          <option value="Food">Food</option>
+          <option value="Games">Games</option>
+          <option value="Journalism">Journalism</option>
+          <option value="Music">Music</option>
+          <option value="Photography">Photography</option>
+          <option value="Publishing">Publishing</option>
+          <option value="Technology">Technology</option>
+          <option value="Theater">Theater</option>
+
+     	</select>
+
+     <select id="names" name="category">
+
+     </select>
+
+
+    	<!-- <input type="text" name="main_category" placeholder="main_category" required="required" />
+        <input type="text" name="category" placeholder="category" required="required" /> -->
+		<input type="text" name="usd_goal_real" placeholder="usd_goal_real" required="required" />
+		<input type="text" name="duration_days" placeholder="duration_days" required="required" />
+		<input type="text" name="launch_month" placeholder="launch_month" required="required" />
+		<input type="text" name="launch_day" placeholder="launch_day" required="required" />
+		<input type="text" name="US" placeholder="US" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
